@@ -24,6 +24,11 @@ abstract class House {
 
   abstract openDoor(key: Key): void;
 
+  constructor(key: Key) {
+    this.door = false;
+    this.key = key;
+  }
+
   comeIn(person: Person): void {
     if (this.door) {
       this.tenants.push(person);
@@ -35,9 +40,6 @@ abstract class House {
 }
 
 class MyHouse extends House {
-  constructor(key: Key) {
-    super();
-  }
 
   openDoor(key: Key): void {
     if (key.getSignature() === this.key?.getSignature()) {
